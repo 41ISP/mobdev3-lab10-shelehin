@@ -27,7 +27,7 @@ const MovieDetails = () => {
         <div className="container">
             <Link to="/" className="back-button">← Back to Search</Link>
 
-           {movieDetails && <div className="movie-detail-card"> 
+            {movieDetails && <div className="movie-detail-card">
                 <div className="movie-header">
                     <div className="poster-section">
                         <img
@@ -104,48 +104,43 @@ const MovieDetails = () => {
                     <div className="section">
                         <h2 className="section-title">Ratings & Reviews</h2>
                         <div className="ratings-container">
-                            <div className="rating-box">
-                                <div className="rating-source">
-                                    Internet Movie Database
+                            {movieDetails.Ratings.map((el) => (
+                                <div className="rating-box">
+                                    <div className="rating-source">
+                                        {el.Source}
+                                    </div>
+                                    <div className="rating-value">{el.Value}</div>
                                 </div>
-                                <div className="rating-value">8.3/10</div>
-                            </div>
-                            <div className="rating-box">
-                                <div className="rating-source">Rotten Tomatoes</div>
-                                <div className="rating-value">68%</div>
-                            </div>
-                            <div className="rating-box">
-                                <div className="rating-source">Metacritic</div>
-                                <div className="rating-value">{movieDetails.Metascore}/100</div>
-                            </div>
-                        </div>
-
-                        <div className="awards-box">
-                            <div className="awards-icon">🏆</div>
-                            <div className="awards-text">
-                                {/* Won 2 Oscars. 120 wins & 246 nominations total */}
-                                {movieDetails.Awards}
-                            </div>
+                            )
+                            )}
                         </div>
                     </div>
 
-                    <div className="section">
-                        <h2 className="section-title">Box Office & Statistics</h2>
-                        <div className="box-office-section">
-                            <div className="box-office-card">
-                                <div className="box-office-label">Box Office</div>
-                                <div className="box-office-value">{movieDetails.BoxOffice}</div>
-                            </div>
-                            <div className="box-office-card">
-                                <div className="box-office-label">IMDb Votes</div>
-                                <div className="box-office-value">{movieDetails.imdbVotes}</div>
-                            </div>
+                    <div className="awards-box">
+                        <div className="awards-icon">🏆</div>
+                        <div className="awards-text">
+                            {/* Won 2 Oscars. 120 wins & 246 nominations total */}
+                            {movieDetails.Awards}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="section">
+                    <h2 className="section-title">Box Office & Statistics</h2>
+                    <div className="box-office-section">
+                        <div className="box-office-card">
+                            <div className="box-office-label">Box Office</div>
+                            <div className="box-office-value">{movieDetails.BoxOffice}</div>
+                        </div>
+                        <div className="box-office-card">
+                            <div className="box-office-label">IMDb Votes</div>
+                            <div className="box-office-value">{movieDetails.imdbVotes}</div>
                         </div>
                     </div>
                 </div>
             </div>
 }
-        </div> 
+        </div > 
     )
 }
 
